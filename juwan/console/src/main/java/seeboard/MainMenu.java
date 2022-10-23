@@ -1,5 +1,7 @@
 package lionlike.team13.juwan.console.src.main.java.seeboard;
 
+import lionlike.team13.juwan.console.src.main.java.domain.User;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,13 +12,14 @@ public class MainMenu {
 
     Scanner sc = new Scanner(System.in);
     int num;
-    String writersc;
-    String titlesc;
-    String textsc;
+    User user = new User();
+//    ArrayList<String> writer = new ArrayList<>();
+    ArrayList<String> writer = user.getWriter();
+    ArrayList<String> title = user.getTitle();
+    ArrayList<String> text = user.getText();
 
-    ArrayList<String> writer = new ArrayList<>();
-    ArrayList<String> title = new ArrayList<>();
-    ArrayList<String> text = new ArrayList<>();
+
+
     public void printmenu(){
         while (true){
             menu();
@@ -26,10 +29,9 @@ public class MainMenu {
                 case 2 : menu2(); break;
                 case 3 : menu3(); break;
                 case 4 : menu4(); break;
-                case 5 :
-                    System.out.println("게시판을 종료합니다.");return;
-                default:
-                    System.out.println("잘못된 값을 입력하셨습니다. (ex 1~4)"); //default 값에 문자를 넣어도 실행하게 할수 없을까
+                case 5 : System.out.println("게시판을 종료합니다.");
+                    return;
+                default: System.out.println("잘못된 값을 입력하셨습니다. (ex 1~4)"); //default 값에 문자를 넣어도 실행하게 할수 없을까
                     break;
             }
         }
@@ -48,8 +50,8 @@ public class MainMenu {
         System.out.println("==============================================================");
         System.out.println("번호                        제목                      작성자");
         System.out.println("==============================================================");
-        for (int i=0; i<writer.size(); i++) {
-            System.out.printf("%d\t\t\t\t\t\t\t%s\t\t\t\t\t\t%s\n",i+1,title.get(i),writer.get(i));
+        for (int i=0; i<user.getWriter().size(); i++) {
+            System.out.printf("%d%29s%26s\n",i+1,title.get(i),writer.get(i));
         }
     }
 
@@ -69,20 +71,20 @@ public class MainMenu {
     public void menu3(){
         System.out.println("==============================================================");
         System.out.printf("작성자 : > ");
-        writersc = sc.next();
-        writer.add(writersc);
+//        writersc = sc.next();
+        writer.add(user.getWritersc());
         System.out.printf("제목 : > ");
-        titlesc = sc.next();
-        title.add(titlesc);
+//        titlesc = sc.next();
+        title.add(user.getTitlesc());
         System.out.printf("본문 : > ");
-        textsc = sc.next();
-        text.add(textsc);  // text를 title로 써놨다.. 조심
+//        textsc = sc.next();
+        text.add(user.getTextsc());  // text를 title로 써놨다.. 조심
         System.out.println("==============================================================");
         System.out.println("등록완료");
         System.out.printf("번호 : %s\n",writer.size());
-        System.out.printf("작성자 : %s\n",writersc);
-        System.out.printf("제목 : %s\n",titlesc);
-        System.out.printf("본문 : %s\n",textsc);
+        System.out.printf("작성자 : %s\n", writer.get(writer.size()-1));
+        System.out.printf("제목 : %s\n",title.get(title.size()-1));
+        System.out.printf("본문 : %s\n",text.get(text.size()-1));
     }
 
     public void menu4(){
