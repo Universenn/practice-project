@@ -6,9 +6,6 @@ import java.util.Scanner;
 public class User {
     Scanner sc = new Scanner(System.in);
     private int numsc;
-    public int getNumsc() {
-        return numsc = sc.nextInt();
-    }
     private String writersc;
     private String titlesc;
     private String textsc;
