@@ -51,7 +51,7 @@ public class MainMenu {
         System.out.println("번호                        제목                      작성자");
         System.out.println("==============================================================");
         for (int i=0; i<user.getWriter().size(); i++) {
-            System.out.printf("%d%29s%25s\n",i+1,title.get(i),writer.get(i));
+            System.out.printf("%d%29s%26s\n",i+1,title.get(i),writer.get(i));
         }
     }
 
